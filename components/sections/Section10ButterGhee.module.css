@@ -1,0 +1,266 @@
+/* Section 10 — Built in Layers. Finished with Fire.
+   Balanced 3-Element Editorial Food Presentation */
+
+:root {
+  --sec10-flank-height: clamp(170px, 24vh, 230px);
+}
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 0 clamp(1.5rem, 4vw, 4rem);
+}
+
+/* ── Ambient Background Atmosphere ── */
+.ambientGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(242, 186, 61, 0.04) 0%, rgba(0, 0, 0, 0.98) 75%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.fireHalo {
+  position: absolute;
+  width: clamp(380px, 48vw, 720px);
+  height: clamp(280px, 42vh, 560px);
+  top: 52%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: radial-gradient(
+    ellipse at center,
+    rgba(242, 186, 61, 0.12) 0%,
+    rgba(212, 163, 89, 0.05) 45%,
+    rgba(0, 0, 0, 0) 72%
+  );
+  filter: blur(40px);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Top Editorial Header ── */
+.headerBlock {
+  position: absolute;
+  top: clamp(2rem, 5vh, 4rem);
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 10;
+  pointer-events: none;
+  padding: 0 1.5rem;
+}
+
+.eyebrow {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold, #f2ba3d);
+  text-transform: uppercase;
+  margin: 0 0 0.75rem 0;
+}
+
+.title {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 4.4vw, 4.2rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin: 0 0 0.6rem 0;
+}
+
+.goldItalic {
+  font-style: italic;
+  color: var(--color-gold, #f2ba3d);
+}
+
+.description {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.65);
+  max-width: 580px;
+  margin: 0 auto;
+}
+
+/* ── Organic Composition Stage ── */
+.stage {
+  position: relative;
+  width: 100%;
+  max-width: 1440px;
+  height: clamp(420px, 60vh, 580px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  margin-top: clamp(2.5rem, 6vh, 4.5rem);
+}
+
+/* ── Central Dominant Hero Video (Chicken Biryani) ── */
+.heroWrap {
+  position: relative;
+  width: clamp(320px, 35vw, 500px);
+  aspect-ratio: 16 / 10;
+  z-index: 5;
+  will-change: transform;
+  /* Organic soft feathered edge dissolve matching Section 01 / 06 */
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 66% at 50% 50%,
+    #000000 58%,
+    rgba(0, 0, 0, 0.7) 76%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 72% 66% at 50% 50%,
+    #000000 58%,
+    rgba(0, 0, 0, 0.7) 76%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 25px 60px rgba(0, 0, 0, 0.95)) drop-shadow(0 0 35px rgba(242, 186, 61, 0.08));
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Dark shade overlay with smooth edge dissolving on all boundaries - identical to Section 01 / 05 / 06 */
+.darkShadeOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0.6) 6%, transparent 16%),
+    linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0.6) 6%, transparent 16%),
+    linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.6) 8%, transparent 20%),
+    linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.7) 10%, transparent 24%),
+    radial-gradient(
+      ellipse 72% 68% at 50% 50%,
+      transparent 52%,
+      rgba(0, 0, 0, 0.38) 74%,
+      rgba(0, 0, 0, 0.92) 95%
+    );
+}
+
+/* ── Flanking Surrounding Videos (Shared Equal Height) ── */
+.flankVideoWrap {
+  position: absolute;
+  height: clamp(170px, 24vh, 230px);
+  aspect-ratio: 16 / 9;
+  z-index: 3;
+  will-change: transform, opacity;
+  pointer-events: none;
+}
+
+.videoInner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  /* Organic edge blending — eliminates all rectangular borders */
+  -webkit-mask-image: radial-gradient(
+    ellipse 76% 72% at 50% 50%,
+    #000000 42%,
+    rgba(0, 0, 0, 0.6) 74%,
+    transparent 100%
+  );
+  mask-image: radial-gradient(
+    ellipse 76% 72% at 50% 50%,
+    #000000 42%,
+    rgba(0, 0, 0, 0.6) 74%,
+    transparent 100%
+  );
+  filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.9));
+}
+
+.flankVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.flankAtmosphere {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 35%,
+    rgba(0, 0, 0, 0.5) 75%,
+    rgba(0, 0, 0, 0.95) 100%
+  );
+  pointer-events: none;
+}
+
+/* Left Flank: Butter Chicken Makhani — custom vertical position & subtle tilt */
+.flankLeft {
+  left: clamp(1rem, 4vw, 5rem);
+  top: 54%;
+  transform: translateY(-50%);
+}
+
+.innerRotateLeft {
+  transform: rotate(-2.8deg);
+}
+
+/* Right Flank: Chicken Tikka — staggered vertical position & subtle counter tilt */
+.flankRight {
+  right: clamp(1rem, 4vw, 5rem);
+  top: 45%;
+  transform: translateY(-50%);
+}
+
+.innerRotateRight {
+  transform: rotate(3.2deg);
+}
+
+/* ── Responsive Adaptations ── */
+@media (max-width: 1050px) {
+  .flankVideoWrap {
+    height: clamp(140px, 20vh, 185px);
+  }
+
+  .flankLeft {
+    left: 1rem;
+  }
+
+  .flankRight {
+    right: 1rem;
+  }
+}
+
+@media (max-width: 820px) {
+  /* On compact screens, ensure clear spacing remains or soften flanking elements */
+  .flankVideoWrap {
+    height: clamp(120px, 16vh, 150px);
+    opacity: 0.65;
+  }
+}
+
+@media (max-width: 680px) {
+  /* On mobile, let the central hero dominate cleanly without clutter */
+  .flankVideoWrap {
+    display: none;
+  }
+
+  .heroWrap {
+    width: 92vw;
+    aspect-ratio: 16 / 10;
+  }
+
+  .title {
+    font-size: 2rem;
+  }
+}

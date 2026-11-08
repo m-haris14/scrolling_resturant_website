@@ -1,0 +1,213 @@
+/* Section 11 — Come Lift the Lid (Finale) */
+
+.section {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background-color: #000000;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(5rem, 10vh, 9rem) clamp(1.5rem, 5vw, 5rem);
+  overflow: hidden;
+}
+
+.ambientGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 60%,
+    rgba(242, 186, 61, 0.06) 0%,
+    rgba(0, 0, 0, 0.98) 75%
+  );
+  pointer-events: none;
+  z-index: 0;
+}
+
+.container {
+  position: relative;
+  max-width: 1240px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  z-index: 1;
+}
+
+/* ── Header Block ── */
+.headerBlock {
+  max-width: 680px;
+  margin-bottom: clamp(3.5rem, 7vh, 6rem);
+}
+
+.eyebrow {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  font-size: 0.74rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold, #f2ba3d);
+  text-transform: uppercase;
+  margin: 0 0 1.25rem 0;
+}
+
+.heading {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3.2rem, 6.5vw, 6.2rem);
+  font-weight: 400;
+  color: #ffffff;
+  line-height: 1.05;
+  letter-spacing: -0.01em;
+  margin: 0 0 1.25rem 0;
+}
+
+.goldItalic {
+  font-style: italic;
+  color: var(--color-gold, #f2ba3d);
+}
+
+.subtext {
+  font-family: var(--font-sans), system-ui, sans-serif;
+  font-size: 1rem;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.65);
+  margin: 0 auto;
+}
+
+/* ── Four Numerical Highlights Grid ── */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(1rem, 2.5vw, 2.5rem);
+  width: 100%;
+  margin-bottom: clamp(4rem, 8vh, 7rem);
+}
+
+.statCard {
+  position: relative;
+  background-color: rgba(255, 255, 255, 0.02);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 6px;
+  padding: clamp(2rem, 3.5vh, 3rem) clamp(1rem, 2vw, 2rem);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.35s cubic-bezier(0.16, 1, 0.3, 1),
+              border-color 0.35s ease,
+              background-color 0.35s ease,
+              box-shadow 0.35s ease;
+  will-change: transform;
+}
+
+.statCard:hover {
+  transform: translateY(-6px);
+  background-color: rgba(255, 255, 255, 0.04);
+  border-color: rgba(242, 186, 61, 0.35);
+  box-shadow: 0 16px 45px rgba(0, 0, 0, 0.7), 0 0 25px rgba(242, 186, 61, 0.08);
+}
+
+.numberRow {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: 0.15rem;
+}
+
+.number {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(3.8rem, 6vw, 5.8rem);
+  font-weight: 400;
+  line-height: 1;
+  color: #ffffff;
+  letter-spacing: -0.02em;
+}
+
+.unit {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.4rem, 3.5vw, 3.5rem);
+  color: var(--color-gold, #f2ba3d);
+}
+
+.cardDivider {
+  width: 32px;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(242, 186, 61, 0.6), transparent);
+  margin: 1rem 0 0.85rem 0;
+}
+
+.label {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  color: rgba(255, 255, 255, 0.75);
+  text-transform: uppercase;
+  margin: 0;
+  line-height: 1.4;
+}
+
+/* ── Closing Statement ── */
+.closingBlock {
+  max-width: 860px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0 1rem;
+}
+
+.ornamentLine {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 2rem;
+  color: var(--color-gold, #f2ba3d);
+  font-size: 1rem;
+  letter-spacing: 0.5em;
+  opacity: 0.8;
+}
+
+.ornamentDot {
+  color: var(--color-gold, #f2ba3d);
+  font-size: 1.1rem;
+}
+
+.statement {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(1.8rem, 3.2vw, 2.9rem);
+  font-style: italic;
+  font-weight: 400;
+  color: #fff7eb;
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  margin: 0 0 2rem 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.signature {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: var(--color-gold, #f2ba3d);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+/* Responsive adjustments */
+@media (max-width: 900px) {
+  .statsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .statsGrid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+
+  .statement {
+    font-size: 1.6rem;
+  }
+}

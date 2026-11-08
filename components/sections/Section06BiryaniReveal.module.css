@@ -1,0 +1,121 @@
+/* Section 06 — Cinematic Biryani Reveal */
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ambientAtmosphere {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 65%, rgba(212, 163, 89, 0.06) 0%, rgba(0, 0, 0, 0.95) 75%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Unmasked Center Video Presentation ── */
+.videoWrap {
+  position: relative;
+  width: min(90vw, 1200px);
+  aspect-ratio: 16 / 9;
+  max-height: 85vh;
+  max-width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 2;
+  will-change: transform, opacity;
+}
+
+/* Feather the perimeter with balanced soft falloff on all sides — identical to Section 01 */
+.videoMask {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  background: transparent;
+  mask-image: radial-gradient(
+    ellipse 72% 66% at 50% 50%,
+    #000000 48%,
+    rgba(0, 0, 0, 0.85) 68%,
+    rgba(0, 0, 0, 0.3) 84%,
+    transparent 96%
+  );
+  -webkit-mask-image: radial-gradient(
+    ellipse 72% 66% at 50% 50%,
+    #000000 48%,
+    rgba(0, 0, 0, 0.85) 68%,
+    rgba(0, 0, 0, 0.3) 84%,
+    transparent 96%
+  );
+}
+
+.video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/* Dark shade overlay with smooth edge dissolving on all boundaries — identical to Section 01 */
+.darkShadeOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  pointer-events: none;
+  background:
+    linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0.6) 6%, transparent 16%),
+    linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0.6) 6%, transparent 16%),
+    linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.6) 8%, transparent 20%),
+    linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.7) 10%, transparent 24%),
+    radial-gradient(
+      ellipse 72% 68% at 50% 50%,
+      transparent 52%,
+      rgba(0, 0, 0, 0.38) 74%,
+      rgba(0, 0, 0, 0.92) 95%
+    );
+}
+
+/* ── Tagline at bottom ── */
+.taglineContainer {
+  position: absolute;
+  bottom: clamp(2rem, 8vh, 5rem);
+  left: 0;
+  right: 0;
+  text-align: center;
+  z-index: 5;
+  pointer-events: none;
+  padding: 0 1.5rem;
+  will-change: transform, opacity;
+}
+
+.tagline {
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(2.2rem, 5vw, 4.2rem);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: #ffffff;
+  line-height: 1.2;
+  margin: 0;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.8);
+}
+
+.goldItalic {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--color-gold, #f2ba3d);
+}
+
+@media (max-width: 768px) {
+  .videoWrap {
+    width: 95vw;
+    height: 60vh;
+  }
+}

@@ -1,0 +1,225 @@
+/* Section 05 — BIRYANI Video Typography Mask */
+
+.section {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: #000000;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ambientGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 50% 50%, rgba(212, 163, 89, 0.04) 0%, rgba(0, 0, 0, 0.9) 70%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ── Typography Mask Container ── */
+.maskContainer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #000000;
+  isolation: isolate;
+  z-index: 1;
+}
+
+.videoStage {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+}
+
+.centerVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+/*
+ * Dark shade overlay — identical to Section 01's .darkShadeOverlay.
+ * Sits on top of the video (z-index 1.5) but below the stencil mask (z-index 2),
+ * so it darkens the footage visible through the BIRYANI letterforms.
+ */
+.videoShadeOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  /* above video, below stencil which is z-index 3 */
+  pointer-events: none;
+  background:
+    linear-gradient(to right, #000000 0%, rgba(0, 0, 0, 0.6) 6%, transparent 16%),
+    linear-gradient(to left, #000000 0%, rgba(0, 0, 0, 0.6) 6%, transparent 16%),
+    linear-gradient(to bottom, #000000 0%, rgba(0, 0, 0, 0.6) 8%, transparent 20%),
+    linear-gradient(to top, #000000 0%, rgba(0, 0, 0, 0.7) 10%, transparent 24%),
+    radial-gradient(ellipse 72% 68% at 50% 50%,
+      transparent 52%,
+      rgba(0, 0, 0, 0.38) 74%,
+      rgba(0, 0, 0, 0.92) 95%);
+}
+
+/* Stencil Overlay: pure black canvas with white text, multiplied over video */
+.stencilLayer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000000;
+  mix-blend-mode: multiply;
+  z-index: 3;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+}
+
+.maskTextWrap {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  will-change: transform;
+}
+
+.stencilText {
+  color: #ffffff;
+  font-family: var(--font-cormorant), 'Cormorant Garamond', Georgia, serif;
+  font-size: clamp(6.5rem, 20vw, 23rem);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  line-height: 1;
+  user-select: none;
+  text-align: center;
+}
+
+/* ── Flanking Videos (Left & Right Ambient Pillars) ── */
+.flankCardLeft,
+.flankCardRight {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(140px, 14vw, 210px);
+  height: clamp(230px, 34vh, 340px);
+  z-index: 4;
+  border-radius: 4px;
+  overflow: hidden;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.9), 0 0 25px rgba(242, 186, 61, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  pointer-events: none;
+  will-change: transform, opacity;
+  transition: border-color 0.4s ease;
+}
+
+.flankCardLeft {
+  left: clamp(1.5rem, 4vw, 4.5rem);
+}
+
+.flankCardRight {
+  right: clamp(1.5rem, 4vw, 4.5rem);
+}
+
+.flankVideoWrap {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.flankVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+}
+
+.flankVignette {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg,
+      rgba(0, 0, 0, 0.3) 0%,
+      rgba(0, 0, 0, 0) 30%,
+      rgba(0, 0, 0, 0) 65%,
+      rgba(0, 0, 0, 0.75) 100%);
+  pointer-events: none;
+}
+
+.flankLabel {
+  position: absolute;
+  bottom: 0.75rem;
+  left: 0.85rem;
+  right: 0.85rem;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 2;
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.16em;
+}
+
+.flankIndex {
+  color: var(--color-gold, #f2ba3d);
+  font-weight: 600;
+}
+
+.flankName {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+/* ── Editorial Indicator ── */
+.indicatorWrap {
+  position: absolute;
+  top: clamp(2rem, 5vh, 3.5rem);
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 5;
+  pointer-events: none;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.indicatorEyebrow {
+  font-family: var(--font-cinzel), 'Cinzel', serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.28em;
+  color: rgba(242, 186, 61, 0.92);
+  text-transform: uppercase;
+  text-shadow:
+    0 0 18px rgba(242, 186, 61, 0.45),
+    0 0 40px rgba(242, 186, 61, 0.18);
+  font-weight: 600;
+}
+
+@media (max-width: 860px) {
+
+  /* ── BIRYANI text: adjusted larger for mobile ── */
+  .stencilText {
+    font-size: clamp(2.5rem, 13.5vw, 4.6rem);
+    letter-spacing: 0.05em;
+  }
+
+  /* ── Side dish video cards: hidden on mobile ── */
+  .flankCardLeft,
+  .flankCardRight {
+    display: none;
+  }
+
+  /* Eyebrow label tightened for mobile */
+  .indicatorEyebrow {
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
+  }
+}
