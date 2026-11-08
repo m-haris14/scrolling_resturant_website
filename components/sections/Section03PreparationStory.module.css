@@ -1,0 +1,148 @@
+/* Section 03 — The Dum Story */
+
+.section {
+  position: relative;
+  width: 100%;
+  background: #000000;
+  /* Top padding removed so the gap between Section 2 and Section 3 is determined cleanly by Section 2's bottom padding, matching the Section 1–2 gap */
+  padding: 0 clamp(2rem, 5.5vw, 6rem) clamp(6rem, 14vh, 12rem);
+  color: #ffffff;
+}
+
+.container {
+  max-width: 1220px;
+  margin: 0 auto;
+}
+
+/* ── Top Header Badge (01 —— THE DUM) ── */
+.headerBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.85rem;
+  margin-bottom: clamp(2.5rem, 5vh, 4.2rem);
+  user-select: none;
+}
+
+.badgeNum {
+  font-family: var(--font-sans);
+  font-size: clamp(0.85rem, 1.2vw, 1.05rem);
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: #f2ba3d;
+  line-height: 1;
+}
+
+.badgeLine {
+  display: block;
+  width: clamp(2rem, 3.5vw, 3rem);
+  height: 1.5px;
+  background: #f2ba3d;
+  opacity: 0.85;
+}
+
+.badgeLabel {
+  font-family: var(--font-sans);
+  font-size: clamp(0.72rem, 1vw, 0.85rem);
+  font-weight: 600;
+  letter-spacing: 0.24em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.72);
+  line-height: 1;
+}
+
+/* ── Story Paragraph ── */
+/* Font size reduced slightly (~9%) as requested: clamp(1.85rem, 3.7vw, 3.5rem) */
+.storyParagraph {
+  font-family: var(--font-serif);
+  font-size: clamp(1.85rem, 3.7vw, 3.5rem);
+  font-weight: 400;
+  line-height: 1.38;
+  letter-spacing: -0.01em;
+  color: #f0ece4;
+  margin: 0;
+  text-align: left;
+  user-select: none;
+}
+
+/* ── Individual word spans (Pure React JSX, animated by GSAP) ── */
+
+/* Base unrevealed state: faintly visible in dark grey (opacity: 0.18) */
+.wordNormal {
+  display: inline;
+  color: #f0ece4;
+  /* warm off-white */
+  opacity: 0.18;
+  will-change: opacity;
+}
+
+/* Gold highlighted words: dim gold initially (opacity: 0.18), reveals to bright radiant gold */
+.wordGold {
+  display: inline;
+  color: #f2ba3d;
+  /* warm gold accent */
+  opacity: 0.18;
+  will-change: opacity;
+}
+
+/* "alone" — gold italic */
+.wordGoldItalic {
+  display: inline;
+  color: #f2ba3d;
+  font-style: italic;
+  font-weight: 500;
+  opacity: 0.18;
+  will-change: opacity;
+}
+
+/* "dum" — gold bold italic */
+.wordGoldBoldItalic {
+  display: inline;
+  color: #f2ba3d;
+  font-style: italic;
+  font-weight: 600;
+  opacity: 0.18;
+  will-change: opacity;
+}
+
+/* ── Inline Illustration Spans ── */
+.inlineIcon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  vertical-align: -0.16em;
+  height: 1.18em;
+  width: auto;
+  margin: 0 0.24em;
+  line-height: 1;
+  opacity: 0.18;
+  will-change: opacity;
+}
+
+.svgIcon {
+  height: 1.18em;
+  width: auto;
+  display: block;
+  overflow: visible;
+  filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.8));
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 0 clamp(1.2rem, 4vw, 1.8rem) clamp(4rem, 10vh, 7rem);
+  }
+
+  .headerBadge {
+    margin-bottom: clamp(1.6rem, 3.5vh, 2.4rem);
+  }
+
+  .storyParagraph {
+    font-size: clamp(1.05rem, 3.8vw, 1.35rem);
+    line-height: 1.56;
+    letter-spacing: -0.005em;
+  }
+
+  .inlineIcon {
+    margin: 0 0.16em;
+    vertical-align: -0.12em;
+  }
+}
